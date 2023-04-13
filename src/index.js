@@ -13,3 +13,4 @@ function search (){
 
 };
 
+fetchCountries()
