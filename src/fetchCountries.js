@@ -1,10 +1,14 @@
-
+export {fetchCountries};
 const ENDPOINT = "https://restcountries.com/v3.1";
-const fields = 'fields=name.official, capital, population, flags.svg, languages';
+const fields = 'fields=name,capital,population,flags,languages';
 
-export default function fetchCountries(){
-  return fetch('${ENDPOINT}/name/${name}')
-  .then((data) => data.json()).then(({capital}) => console.log(capital))
-  .catch(error => console.log(error));
+
+function fetchCountries(name){
+  return fetch(`${ENDPOINT}/name/${name}?${fields}`)
+  .then(response => {return response.json()}
+  // .then(response => console.log(response))
+  // .then(({name}) => console.log(name.official))
+  );
 };
-  
+// .catch(error =>{console.log(error)})
+// then(response => response.json().then(response => response[0]).then(({capital}) =>console.log(capital)));
